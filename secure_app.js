@@ -19,8 +19,8 @@ import fs from 'fs';
 import http from 'http';
 import https from 'https';
 
-const privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
-const certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
+const privateKey  = fs.readFileSync('sslcert/_.rodley.com.key', 'utf8');
+const certificate = fs.readFileSync('sslcert/_.rodley.com.pem', 'utf8');
 const credentials = {key: privateKey, cert: certificate};
 
 // Create an express app
@@ -39,6 +39,7 @@ const activeGames = {};
  */
 app.post('/interactions', async function (req, res) {
   // Interaction type and data
+	console.log("req.body = " + JSON.stringify(req.body))
   const { type, id, data } = req.body;
 
   /**
@@ -184,14 +185,11 @@ app.post('/interactions', async function (req, res) {
   }
 });
 
-var httpServer = http.createServer(app);
+// var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
-httpServer.listen(3000);
-httpsServer.listen(3443);
-
-/*
-app.listen(PORT, () => {
+// httpServer.listen(3000);
+httpsServer.listen(PORT, () => {
   console.log('Listening on port', PORT);
 
   // Check if guild commands from commands.js are installed (if not, install them)
@@ -200,4 +198,4 @@ app.listen(PORT, () => {
     CHALLENGE_COMMAND,
   ]);
 });
- */
+ 
