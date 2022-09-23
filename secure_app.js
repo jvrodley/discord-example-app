@@ -10,6 +10,7 @@ import {
 import { VerifyDiscordRequest, getRandomEmoji, DiscordRequest } from './utils.js';
 import { getShuffledOptions, getResult } from './game.js';
 import {
+  NEED_COMMAND,
   CHALLENGE_COMMAND,
   TEST_COMMAND,
   HasGuildCommands,
@@ -57,6 +58,17 @@ app.post('/interactions', async function (req, res) {
     const { name } = data;
 
     // "test" guild command
+    if (name === 'need') {
+      // Send a message into the channel where command was triggered from
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: 'the project has been added to the need list ',
+        },
+      });
+    }
+
     if (name === 'test') {
       // Send a message into the channel where command was triggered from
       return res.send({
@@ -194,7 +206,7 @@ httpsServer.listen(PORT, () => {
 
   // Check if guild commands from commands.js are installed (if not, install them)
   HasGuildCommands(process.env.APP_ID, process.env.GUILD_ID, [
-    TEST_COMMAND,
+    NEED_COMMAND,
     CHALLENGE_COMMAND,
   ]);
 });
