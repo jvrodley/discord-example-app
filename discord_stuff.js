@@ -21,9 +21,6 @@ import https from 'https';
 
 export async function discord_interaction(req, res ) {
 // Interaction type and data
-    import {getResult, getShuffledOptions} from "./game.js";
-    import {DiscordRequest, getRandomEmoji} from "./utils.js";
-
     console.log("req.body = " + JSON.stringify(req.body))
     const {type, id, data} = req.body;
 
