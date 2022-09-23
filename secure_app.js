@@ -12,7 +12,6 @@ import { getShuffledOptions, getResult } from './game.js';
 import {
   NEED_COMMAND,
   CHALLENGE_COMMAND,
-  TEST_COMMAND,
   HasGuildCommands,
 } from './commands.js';
 
@@ -57,7 +56,7 @@ app.post('/interactions', async function (req, res) {
   if (type === InteractionType.APPLICATION_COMMAND) {
     const { name } = data;
 
-    // "test" guild command
+    // "need" guild command
     if (name === 'need') {
       // Send a message into the channel where command was triggered from
       return res.send({
@@ -69,16 +68,6 @@ app.post('/interactions', async function (req, res) {
       });
     }
 
-    if (name === 'test') {
-      // Send a message into the channel where command was triggered from
-      return res.send({
-        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-        data: {
-          // Fetches a random emoji to send from a helper function
-          content: 'hello world ' + getRandomEmoji(),
-        },
-      });
-    }
     // "challenge" guild command
     if (name === 'challenge' && id) {
       const userId = req.body.member.user.id;
