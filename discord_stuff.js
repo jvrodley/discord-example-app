@@ -1,13 +1,26 @@
+import 'dotenv/config';
+import express from 'express';
+import {
+    InteractionType,
+    InteractionResponseType,
+    InteractionResponseFlags,
+    MessageComponentTypes,
+    ButtonStyleTypes,
+} from 'discord-interactions';
+import { VerifyDiscordRequest, getRandomEmoji, DiscordRequest } from './utils.js';
+import { getShuffledOptions, getResult } from './game.js';
+import {
+    NEED_COMMAND,
+    CHALLENGE_COMMAND,
+    HasGuildCommands,
+} from './commands.js';
+
+import fs from 'fs';
+import http from 'http';
+import https from 'https';
 
 export async function discord_interaction(req, res ) {
 // Interaction type and data
-    import {
-        ButtonStyleTypes,
-        InteractionResponseFlags,
-        InteractionResponseType,
-        InteractionType,
-        MessageComponentTypes
-    } from "discord-interactions";
     import {getResult, getShuffledOptions} from "./game.js";
     import {DiscordRequest, getRandomEmoji} from "./utils.js";
 
