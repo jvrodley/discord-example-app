@@ -96,3 +96,14 @@ Click **Save Changes**, and your app should be ready to run 🚀
 - Browse the `examples/` folder in this project for smaller, feature-specific code examples
 - Join the **[Discord Developers server](https://discord.gg/discord-developers)** to ask questions about the API, attend events hosted by the Discord API team, and interact with other devs.
 - Check out **[community resources](https://discord.com/developers/docs/topics/community-resources#community-resources)** for language-specific tools maintained by community members.
+
+
+AWS Debian instance
+BWHHackathon key pair
+ssh to my ip only
+open to web
+fix security to open 3000
+copy .env.dea4 to .env
+apt install nodejs
+apt install npm
+npm install
