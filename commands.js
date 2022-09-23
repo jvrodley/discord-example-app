@@ -63,6 +63,9 @@ export const NEED_COMMAND = {
   name: 'need',
   description: 'Command to add a need to the list',
   type: 1,
+  options: [
+    { type: 3, name: 'url', description:'Enter the project URL', required: true },
+  ]
 };
 
 // Command containing options
